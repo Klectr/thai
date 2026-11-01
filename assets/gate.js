@@ -22,28 +22,40 @@
     });
   }
 
+  function ensureFrame() {
+    if (document.getElementById("kit-frame")) return;
+    var frame = document.createElement("iframe");
+    frame.name = "kit-frame";
+    frame.id = "kit-frame";
+    frame.style.display = "none";
+    frame.setAttribute("aria-hidden", "true");
+    document.body.appendChild(frame);
+  }
+
   function handleSubmit(event) {
-    event.preventDefault();
     var form = event.target;
     var gate = form.closest(".gate");
     var input = form.querySelector('input[type="email"]');
     var email = (input.value || "").trim();
     if (!email || email.indexOf("@") < 1) {
+      event.preventDefault();
       input.focus();
       return;
     }
-    var endpoint = gate.getAttribute("data-endpoint");
-    if (endpoint) {
-      var body = new FormData();
-      body.append("email_address", email);
-      fetch(endpoint, { method: "POST", body: body, mode: "no-cors" }).catch(function () {});
-    }
     localStorage.setItem(KEY, email);
-    unlockAll();
+    setTimeout(unlockAll, 400);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    ensureFrame();
     document.querySelectorAll(".gate form").forEach(function (form) {
+      var gate = form.closest(".gate");
+      var endpoint = gate ? gate.getAttribute("data-endpoint") : null;
+      if (endpoint) {
+        form.setAttribute("action", endpoint);
+        form.setAttribute("method", "post");
+        form.setAttribute("target", "kit-frame");
+      }
       form.addEventListener("submit", handleSubmit);
     });
     if (localStorage.getItem(KEY)) {
