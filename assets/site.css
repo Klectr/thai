@@ -31,7 +31,9 @@ header.site {
 .brand .thai { color: var(--accent); font-weight: 700; }
 nav.site a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: 15px; }
 nav.site a:hover { color: var(--accent-strong); }
-.hero { padding: 44px 0 10px; }
+.hero { padding: 44px 0 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.hero-media img { width: 100%; display: block; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
 .kicker {
   text-transform: uppercase; letter-spacing: .18em; font-size: 12px;
   font-weight: 700; color: var(--accent); margin: 0 0 10px;
@@ -85,4 +87,3 @@ footer.site { margin: 56px 0 34px; color: var(--faint); font-size: 14px; border-
   .big-thai { font-size: 25px; }
 }
 
-.hero-art { display: block; width: 100%; max-width: 560px; margin: 30px auto 6px; border-radius: 20px; }
