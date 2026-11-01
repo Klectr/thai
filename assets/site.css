@@ -84,3 +84,5 @@ footer.site { margin: 56px 0 34px; color: var(--faint); font-size: 14px; border-
   .steps { grid-template-columns: 1fr; }
   .big-thai { font-size: 25px; }
 }
+
+.hero-art { display: block; width: 100%; max-width: 560px; margin: 30px auto 6px; border-radius: 20px; }
