@@ -87,3 +87,10 @@ footer.site { margin: 56px 0 34px; color: var(--faint); font-size: 14px; border-
   .big-thai { font-size: 25px; }
 }
 
+
+.pack-block { padding: 16px 0 6px; border-bottom: 1px solid #f0e2cd; }
+.pack-block:last-of-type { border-bottom: none; }
+.pack-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.pack-head .when { color: var(--faint); font-size: 14px; white-space: nowrap; }
+.pack-block .gate { margin: 14px 0 10px; }
+.pack-block .meta { margin: 8px 0 10px; }
